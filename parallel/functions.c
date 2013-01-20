@@ -27,5 +27,5 @@ void generatevec(double * x,int size)
 // Subroutine for the power method, to return the spectral radius
 double powerMethod(double * mat, double * x, int size, int iter)
 {
-	return 1.618;
+  return 1.618;
 }
