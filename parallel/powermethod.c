@@ -22,6 +22,10 @@ int main(int argc, char **argv)
   // Determine the size of the matrix and number of iterations from the 
   // command line arguments.
 
+  if( argc < 3 ) {
+    printf("Usage: %s SIZE ITERATIONS\n", argv[0]);
+    exit(1);
+  }
   int size = atoi(argv[1]);
   int iter = atoi(argv[2]);
 
