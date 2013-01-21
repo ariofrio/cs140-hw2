@@ -9,6 +9,8 @@
 
 #include"powermethod.h"
 
+extern int verbose;
+
 int main(int argc, char **argv)
 {
   //Input matrix and vector declaration 
@@ -23,11 +25,12 @@ int main(int argc, char **argv)
   // command line arguments.
 
   if( argc < 3 ) {
-    printf("Usage: %s SIZE ITERATIONS\n", argv[0]);
+    printf("Usage: %s SIZE ITERATIONS [-v]\n", argv[0]);
     exit(1);
   }
   int size = atoi(argv[1]);
   int iter = atoi(argv[2]);
+  verbose = (argc >= 4) && (strcmp(argv[3], "-v") == 0);
 
   // Determine the rank of the current process, and the total number of processes.
   int myrank,nprocs;
