@@ -88,7 +88,31 @@ double norm2(double* x, int size) {
 
 // Replace x by the matrix-vector product mat*x
 double matVec(double* mat, double* x, int size) {
+  int rank, nprocs;
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+  MPI_Comm_size(MPI_COMM_WORLD, &nprocs);
+  int nrows = size/nprocs;
 
+  MPI_Bcast(
+      x, size, MPI_DOUBLE,
+      0, MPI_COMM_WORLD);
+
+  double* y = (double *)malloc(nrows*sizeof(double));
+  int localrow;
+  for(localrow=0; localrow < nrows; localrow++) {
+    int globalrow = rank*nrows + localrow;
+
+    y[localrow] = 0;
+    int j;
+    for(j=0; j<size; j++) {
+      y[localrow] += mat[localrow*size + j] * x[j];
+    }
+  }
+
+  MPI_Gather(
+      y, nrows, MPI_DOUBLE,
+      x, nrows, MPI_DOUBLE,
+      0, MPI_COMM_WORLD);
 }
 
 // Divide each element in vector x by a scalar
@@ -105,17 +129,19 @@ double powerMethod(double * mat, double * x, int size, int iter)
   int rank;
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
   
-  if(rank == 0) {
-    int i;
-    for(i = 0; i<iter; i++) {
+  int i;
+  for(i = 0; i<iter; i++) {
+    if(rank == 0) {
       debug("iteration %d: \n", i);
       double norm = norm2(x, size);
       debug("  norm = %f\n", norm);
       divideVectorByScalar(x, size, norm);
       debug("  x = "); debug_vector(x, size);
-      matVec(mat, x, size);
-      //debug("mat = "); debug_matrix(mat, size);
     }
+    matVec(mat, x, size);
+    //debug("mat = "); debug_matrix(mat, size);
+  }
+  if(rank == 0) {
     return norm2(x, size);
   } else {
     return 1234567;
