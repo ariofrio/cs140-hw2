@@ -15,6 +15,28 @@
 #define debug(...) verbose && printf(__VA_ARGS__)
 int verbose = 0;
 
+// Print the generated matrix only with argument -v.
+void debug_matrix(double* mat, int nrows, int ncols) {
+  int i;
+  for(i = 0; i<nrows; i++) {
+    debug("[");
+    int j;
+    for(j = 0; j<ncols; j++) {
+      debug("%f, ", mat[i*ncols + j]);
+    }
+    debug("], ");
+  }
+  debug("\n");
+}
+
+void debug_vector(double* x, int size) {
+  int i;
+  for(i = 0; i<size; i++) {
+    debug("%f, ", x[i]);
+  }
+  debug("\n");
+}
+
 // Subroutine for generating the input matrix
 void generatematrix(double* mat, int size)
 {
@@ -36,18 +58,8 @@ void generatematrix(double* mat, int size)
     }
   }
   
-  // Print the generated matrix only with argument -v.
   debug("%i: ", rank);
-  int i;
-  for(i = 0; i<nrows; i++) {
-    debug("[");
-    int j;
-    for(j = 0; j<size; j++) {
-      debug("%f, ", mat[i*size + j]);
-    }
-    debug("], ");
-  }
-  debug("\n");
+  debug_matrix(mat, nrows, size);
 }
 
 // Subroutine to generate a random vector
@@ -64,8 +76,49 @@ void generatevec(double * x,int size)
   }
 }
 
+// Compute the norm (length) of vector x
+double norm2(double* x, int size) {
+  double sum = 0;
+  int i;
+  for(i = 0; i<size; i++) {
+    sum += x[i] * x[i];
+  }
+  return sqrt(sum);
+}
+
+// Replace x by the matrix-vector product mat*x
+double matVec(double* mat, double* x, int size) {
+
+}
+
+// Divide each element in vector x by a scalar
+void divideVectorByScalar(double* x, int size, double scalar) {
+  int i;
+  for(i = 0; i < size; i++) {
+    x[i] /= scalar;
+  }
+}
+
 // Subroutine for the power method, to return the spectral radius
 double powerMethod(double * mat, double * x, int size, int iter)
 {
-  return 1.618;
+  int rank;
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+  
+  if(rank == 0) {
+    int i;
+    for(i = 0; i<iter; i++) {
+      debug("iteration %d: \n", i);
+      double norm = norm2(x, size);
+      debug("  norm = %f\n", norm);
+      divideVectorByScalar(x, size, norm);
+      debug("  x = "); debug_vector(x, size);
+      matVec(mat, x, size);
+      //debug("mat = "); debug_matrix(mat, size);
+    }
+    return norm2(x, size);
+  } else {
+    return 1234567;
+  }
 }
+
