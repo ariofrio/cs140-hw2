@@ -53,7 +53,15 @@ void generatematrix(double* mat, int size)
 // Subroutine to generate a random vector
 void generatevec(double * x,int size)
 {
+  int rank;
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
+  if(rank == 0) {
+    int i;
+    for(i = 0; i < size; i++){
+      x[i] = 1;
+    }
+  }
 }
 
 // Subroutine for the power method, to return the spectral radius
