@@ -73,6 +73,7 @@ void generatevec(double * x,int size)
     for(i = 0; i < size; i++){
       x[i] = 1;
     }
+    printf("x0 = "); debug_vector(x, size);
   }
 }
 
@@ -136,10 +137,12 @@ double powerMethod(double * mat, double * x, int size, int iter)
       double norm = norm2(x, size);
       debug("  norm = %f\n", norm);
       divideVectorByScalar(x, size, norm);
-      debug("  x = "); debug_vector(x, size);
+      debug("       x = "); debug_vector(x, size);
     }
     matVec(mat, x, size);
-    //debug("mat = "); debug_matrix(mat, size);
+    if(rank == 0) {
+      debug("  x = Ax = "); debug_vector(x, size);
+    }
   }
   if(rank == 0) {
     return norm2(x, size);
