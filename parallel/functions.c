@@ -88,7 +88,7 @@ double norm2(double* x, int size) {
 }
 
 // Replace x by the matrix-vector product mat*x
-double matVec(double* mat, double* x, int size) {
+void matVec(double* mat, double* x, int size) {
   int rank, nprocs;
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
   MPI_Comm_size(MPI_COMM_WORLD, &nprocs);
