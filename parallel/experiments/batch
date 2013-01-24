@@ -1,0 +1,6 @@
+#!/bin/sh
+#PBS -q large
+#PBS -V
+#PBS -l walltime=0:30:00
+cd ~/hw2/parallel
+mpirun -machinefile $PBS_NODEFILE -np $procs assn2 $size $iter

@@ -1,0 +1,2 @@
+#!/bin/sh
+qsub $(dirname $0)/batch -l nodes=1:ppn=$procs;
