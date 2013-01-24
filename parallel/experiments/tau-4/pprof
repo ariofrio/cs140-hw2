@@ -1,0 +1,154 @@
+Reading Profile files in profile.*
+
+NODE 0;CONTEXT 0;THREAD 0:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0        0.314     2:12.756           1           7  132756146 int main(int, char **) C 
+ 99.0            5     2:11.396           1        5002  131396948 double powerMethod(double *, double *, int, int) C 
+ 98.8     2:10.330     2:11.177        1000        4000     131178 void matVec(double *, double *, int) C 
+  0.9        1,162        1,162           1           0    1162102 MPI_Init() 
+  0.5          621          621        1000           0        621 MPI_Gather() 
+  0.2          224          224        1000           0        224 MPI_Bcast() 
+  0.1          155          189           1           3     189363 void generatematrix(double *, int) C 
+  0.1          112          112        1001           0        112 double norm2(double *, int) C 
+  0.0           57           57        1000           0         58 void divideVectorByScalar(double *, int, double) C 
+  0.0           43           43        2001           0         22 void debug_vector(double *, int) C 
+  0.0           33           33           1           0      33975 void debug_matrix(double *, int, int) C 
+  0.0            7            7           1           0       7333 MPI_Finalize() 
+  0.0            1            1        1002           0          1 MPI_Comm_size() 
+  0.0        0.672        0.672        1004           0          1 MPI_Comm_rank() 
+  0.0        0.069        0.085           1           2         85 void generatevec(double *, int) C 
+---------------------------------------------------------------------------------------
+
+USER EVENTS Profile :NODE 0, CONTEXT 0, THREAD 0
+---------------------------------------------------------------------------------------
+NumSamples   MaxValue   MinValue  MeanValue  Std. Dev.  Event Name
+---------------------------------------------------------------------------------------
+      1000  6.554E+04  6.554E+04  6.554E+04          0  Message size for broadcast
+      1000  1.638E+04  1.638E+04  1.638E+04          0  Message size for gather
+---------------------------------------------------------------------------------------
+
+NODE 1;CONTEXT 0;THREAD 0:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0        0.252     2:12.758           1           7  132758668 int main(int, char **) C 
+ 99.0            1     2:11.403           1        1001  131403757 double powerMethod(double *, double *, int, int) C 
+ 99.0     2:03.898     2:11.402        1000        4000     131403 void matVec(double *, double *, int) C 
+  4.9        6,514        6,514        1000           0       6515 MPI_Gather() 
+  0.9        1,161        1,161           1           0    1161822 MPI_Init() 
+  0.7          988          988        1000           0        988 MPI_Bcast() 
+  0.1          148          182           1           3     182460 void generatematrix(double *, int) C 
+  0.0           33           33           1           0      33825 void debug_matrix(double *, int, int) C 
+  0.0           10           10           1           0      10374 MPI_Finalize() 
+  0.0            1            1        1002           0          1 MPI_Comm_size() 
+  0.0        0.372        0.372        1004           0          0 MPI_Comm_rank() 
+  0.0            0        0.002           1           1          2 void generatevec(double *, int) C 
+---------------------------------------------------------------------------------------
+
+USER EVENTS Profile :NODE 1, CONTEXT 0, THREAD 0
+---------------------------------------------------------------------------------------
+NumSamples   MaxValue   MinValue  MeanValue  Std. Dev.  Event Name
+---------------------------------------------------------------------------------------
+      1000  6.554E+04  6.554E+04  6.554E+04          0  Message size for broadcast
+         0          0          0          0          0  Message size for gather
+---------------------------------------------------------------------------------------
+
+NODE 2;CONTEXT 0;THREAD 0:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0        0.267     2:12.757           1           7  132757611 int main(int, char **) C 
+ 99.0            2     2:11.390           1        1001  131390953 double powerMethod(double *, double *, int, int) C 
+ 99.0     2:10.796     2:11.388        1000        4000     131389 void matVec(double *, double *, int) C 
+  0.9        1,162        1,162           1           0    1162581 MPI_Init() 
+  0.4          486          486        1000           0        486 MPI_Bcast() 
+  0.1          161          195           1           3     195213 void generatematrix(double *, int) C 
+  0.1          104          104        1000           0        104 MPI_Gather() 
+  0.0           33           33           1           0      33815 void debug_matrix(double *, int, int) C 
+  0.0            8            8           1           0       8577 MPI_Finalize() 
+  0.0            1            1        1002           0          1 MPI_Comm_size() 
+  0.0        0.474        0.474        1004           0          0 MPI_Comm_rank() 
+  0.0        0.008         0.02           1           1         20 void generatevec(double *, int) C 
+---------------------------------------------------------------------------------------
+
+USER EVENTS Profile :NODE 2, CONTEXT 0, THREAD 0
+---------------------------------------------------------------------------------------
+NumSamples   MaxValue   MinValue  MeanValue  Std. Dev.  Event Name
+---------------------------------------------------------------------------------------
+      1000  6.554E+04  6.554E+04  6.554E+04          0  Message size for broadcast
+         0          0          0          0          0  Message size for gather
+---------------------------------------------------------------------------------------
+
+NODE 3;CONTEXT 0;THREAD 0:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0        0.236     2:12.755           1           7  132755310 int main(int, char **) C 
+ 99.0            1     2:11.405           1        1001  131405670 double powerMethod(double *, double *, int, int) C 
+ 99.0     2:03.933     2:11.404        1000        4000     131405 void matVec(double *, double *, int) C 
+  5.3        7,011        7,011        1000           0       7011 MPI_Gather() 
+  0.9        1,162        1,162           1           0    1162378 MPI_Init() 
+  0.3          458          458        1000           0        459 MPI_Bcast() 
+  0.1          146          180           1           3     180561 void generatematrix(double *, int) C 
+  0.0           34           34           1           0      34089 void debug_matrix(double *, int, int) C 
+  0.0            6            6           1           0       6461 MPI_Finalize() 
+  0.0            1            1        1002           0          1 MPI_Comm_size() 
+  0.0        0.387        0.387        1004           0          0 MPI_Comm_rank() 
+  0.0        0.002        0.003           1           1          3 void generatevec(double *, int) C 
+---------------------------------------------------------------------------------------
+
+USER EVENTS Profile :NODE 3, CONTEXT 0, THREAD 0
+---------------------------------------------------------------------------------------
+NumSamples   MaxValue   MinValue  MeanValue  Std. Dev.  Event Name
+---------------------------------------------------------------------------------------
+      1000  6.554E+04  6.554E+04  6.554E+04          0  Message size for broadcast
+         0          0          0          0          0  Message size for gather
+---------------------------------------------------------------------------------------
+
+FUNCTION SUMMARY (total):
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0            1     8:51.027           4          28  132756934 int main(int, char **) C 
+ 99.0            9     8:45.597           4        8005  131399332 double powerMethod(double *, double *, int, int) C 
+ 98.9     8:28.958     8:45.373        4000       16000     131343 void matVec(double *, double *, int) C 
+  2.7       14,251       14,251        4000           0       3563 MPI_Gather() 
+  0.9        4,648        4,648           4           0    1162221 MPI_Init() 
+  0.4        2,157        2,157        4000           0        539 MPI_Bcast() 
+  0.1          611          747           4          12     186899 void generatematrix(double *, int) C 
+  0.0          135          135           4           0      33926 void debug_matrix(double *, int, int) C 
+  0.0          112          112        1001           0        112 double norm2(double *, int) C 
+  0.0           57           57        1000           0         58 void divideVectorByScalar(double *, int, double) C 
+  0.0           43           43        2001           0         22 void debug_vector(double *, int) C 
+  0.0           32           32           4           0       8186 MPI_Finalize() 
+  0.0            4            4        4008           0          1 MPI_Comm_size() 
+  0.0            1            1        4016           0          0 MPI_Comm_rank() 
+  0.0        0.079         0.11           4           5         28 void generatevec(double *, int) C 
+
+FUNCTION SUMMARY (mean):
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0        0.267     2:12.756           1           7  132756934 int main(int, char **) C 
+ 99.0            2     2:11.399           1     2001.25  131399332 double powerMethod(double *, double *, int, int) C 
+ 98.9     2:07.239     2:11.343        1000        4000     131343 void matVec(double *, double *, int) C 
+  2.7        3,562        3,562        1000           0       3563 MPI_Gather() 
+  0.9        1,162        1,162           1           0    1162221 MPI_Init() 
+  0.4          539          539        1000           0        539 MPI_Bcast() 
+  0.1          152          186           1           3     186899 void generatematrix(double *, int) C 
+  0.0           33           33           1           0      33926 void debug_matrix(double *, int, int) C 
+  0.0           28           28      250.25           0        112 double norm2(double *, int) C 
+  0.0           14           14         250           0         58 void divideVectorByScalar(double *, int, double) C 
+  0.0           10           10      500.25           0         22 void debug_vector(double *, int) C 
+  0.0            8            8           1           0       8186 MPI_Finalize() 
+  0.0            1            1        1002           0          1 MPI_Comm_size() 
+  0.0        0.476        0.476        1004           0          0 MPI_Comm_rank() 
+  0.0       0.0198       0.0275           1        1.25         28 void generatevec(double *, int) C 
